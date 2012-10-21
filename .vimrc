@@ -56,6 +56,14 @@ inoremap jk <Esc>
 inoremap jj <Esc>
 nnoremap <leader><F5> :source $MYVIMRC<cr>:echo 'sourced '.$MYVIMRC<cr>
 
+" Show buffer list and prompt for buffer number
+" http://superuser.com/a/113213
+map <F4> :ls<CR>:buffer<space>
+
+" Map Ctrl-PgUp and Ctrl-PgDn to next and previous buffers
+nnoremap [6;5~ :bnext<CR>
+nnoremap [5;5~ :bprevious<CR>
+
 " Tagbar
 let g:tagbar_userarrows = 1
 "let g:tagbar_type_javascript = {
