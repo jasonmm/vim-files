@@ -6,6 +6,14 @@ call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 filetype plugin indent on
 
+" Make vim work nice inside a screen session.
+" - HOME and END keys were not working in vim when inside a screen session
+" - this if statement fixed that.
+" - http://vim.wikia.com/wiki/GNU_Screen_integration
+if match($TERM, "screen") != -1
+	set term=xterm
+endif
+
 set nocompatible
 
 set modelines=0
@@ -50,6 +58,9 @@ nnoremap <leader><F5> :source $MYVIMRC<cr>:echo 'sourced '.$MYVIMRC<cr>
 
 " Tagbar
 let g:tagbar_userarrows = 1
+"let g:tagbar_type_javascript = {
+"	\ 'ctagsbin' : '/usr/local/lib/jsctags'
+"\}
 nnoremap <leader>l :TagbarToggle<CR>
 
 " SuperTab integration with OmniComplete
