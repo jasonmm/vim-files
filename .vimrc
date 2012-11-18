@@ -4,7 +4,10 @@
 filetype off
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
+set rtp+=~/.vim/bundle/go
 filetype plugin indent on
+
+syntax on
 
 " Make vim work nice inside a screen session.
 " - HOME and END keys were not working in vim when inside a screen session
@@ -61,8 +64,8 @@ nnoremap <leader><F5> :source $MYVIMRC<cr>:echo 'sourced '.$MYVIMRC<cr>
 map <F4> :ls<CR>:buffer<space>
 
 " Map Ctrl-PgUp and Ctrl-PgDn to next and previous buffers
-nnoremap [6;5~ :bnext<CR>
-nnoremap [5;5~ :bprevious<CR>
+nnoremap [6;5~ :bprevious!<CR>
+nnoremap [5;5~ :bnext!<CR>
 
 " Tagbar
 let g:tagbar_userarrows = 1
