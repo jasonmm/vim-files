@@ -48,8 +48,43 @@ set showmatch
 set hlsearch
 nnoremap <leader><space> :noh<cr>
 
-" nnoremap <leader>P :set paste<cr>
-" nnoremap <leader>p :set nopaste<cr>paste 
+nnoremap <leader>P :set paste<cr>
+nnoremap <leader>p :set nopaste<cr>
+
+"" From https://github.com/skwp/dotfiles/blob/master/vimrc
+
+" ================ Turn Off Swap Files ==============
+set noswapfile
+set nobackup
+set nowb
+
+set nowrap       "Don't wrap lines
+set linebreak    "Wrap lines at convenient points
+
+" https://github.com/skwp/dotfiles/blob/master/vim/plugin/settings/yadr-window-killer.vim
+" Use Q to intelligently close a window 
+" (if there are multiple windows into the same buffer)
+" or kill the buffer entirely if it's the last window looking into that buffer
+function! CloseWindowOrKillBuffer()
+  let number_of_windows_to_this_buffer = len(filter(range(1, winnr('$')), "winbufnr(v:val) == bufnr('%')"))
+
+  " We should never bdelete a nerd tree
+  if matchstr(expand("%"), 'NERD') == 'NERD'
+    wincmd c
+    return
+  endif
+
+  if number_of_windows_to_this_buffer > 1
+    wincmd c
+  else
+    bdelete
+  endif
+endfunction
+
+nnoremap <silent> Q :call CloseWindowOrKillBuffer()<CR>
+
+"" End From skwp
+
 
 nnoremap ; :
 
@@ -72,9 +107,41 @@ let g:tagbar_userarrows = 1
 "let g:tagbar_type_javascript = {
 "	\ 'ctagsbin' : '/usr/local/lib/jsctags'
 "\}
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
 nnoremap <leader>l :TagbarToggle<CR>
 
 " SuperTab integration with OmniComplete
 " http://mirnazim.org/writings/vim-plugins-i-use/
 let g:SuperTabDefaultCompletionType = "context"
+
+nnoremap <leader>Hex :%!xxd<CR>
+nnoremap <leader>hex :%!xxd -r<CR>
+
+au BufRead,BufNewFile *.twig set filetype=htmljinja
 
