@@ -28,3 +28,9 @@
 [submodule "colors/vividchalk"]
 	path = colors/vividchalk
 	url = https://github.com/tpope/vim-vividchalk.git
+[submodule "bundle/vim-twig"]
+	path = bundle/vim-twig
+	url = git://github.com/lunaru/vim-twig.git
+[submodule "bundle/vim-gitgutter"]
+	path = bundle/vim-gitgutter
+	url = git://github.com/airblade/vim-gitgutter.git
