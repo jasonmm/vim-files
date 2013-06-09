@@ -99,8 +99,8 @@ nnoremap <leader><F5> :source $MYVIMRC<cr>:echo 'sourced '.$MYVIMRC<cr>
 map <F4> :ls<CR>:buffer<space>
 
 " Map Ctrl-PgUp and Ctrl-PgDn to next and previous buffers
-nnoremap [6;5~ :bprevious!<CR>
-nnoremap [5;5~ :bnext!<CR>
+nnoremap [6;5~ :bnext!<CR>
+nnoremap [5;5~ :bprevious!<CR>
 
 " Tagbar
 let g:tagbar_userarrows = 1
@@ -139,6 +139,10 @@ nnoremap <leader>l :TagbarToggle<CR>
 " SuperTab integration with OmniComplete
 " http://mirnazim.org/writings/vim-plugins-i-use/
 let g:SuperTabDefaultCompletionType = "context"
+
+" javascript-libraries-syntax:
+" https://github.com/othree/javascript-libraries-syntax.vim
+let g:used_javascript_libs = 'angularjs,jquery'
 
 nnoremap <leader>Hex :%!xxd<CR>
 nnoremap <leader>hex :%!xxd -r<CR>
