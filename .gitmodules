@@ -43,3 +43,6 @@
 [submodule "bundle/javascript-libraries-syntax"]
 	path = bundle/javascript-libraries-syntax
 	url = https://github.com/othree/javascript-libraries-syntax.vim.git
+[submodule "bundle/vim-fenced-code-blocks"]
+	path = bundle/vim-fenced-code-blocks
+	url = https://github.com/amiorin/vim-fenced-code-blocks.git
