@@ -136,6 +136,9 @@ let g:tagbar_type_go = {
 \ }
 nnoremap <leader>l :TagbarToggle<CR>
 
+:highlight Pmenu ctermfg=Black ctermbg=Blue cterm=None guifg=Cyan guibg=DarkBlue
+:highlight PmenuSel ctermfg=White ctermbg=DarkBlue cterm=Bold guifg=White guibg=DarkBlue gui=Bold
+
 " SuperTab integration with OmniComplete
 " http://mirnazim.org/writings/vim-plugins-i-use/
 let g:SuperTabDefaultCompletionType = "context"
